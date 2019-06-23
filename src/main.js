@@ -4,6 +4,10 @@ import router from './router'
 import uploader from 'vue-simple-uploader'
 import Bus from  './emit'
  
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
+ 
+Vue.use(iView);
 Vue.use(uploader)
 
 Vue.prototype.Bus = Bus;

@@ -29,6 +29,7 @@
         this.Bus.$emit("openUploader", {
           superiorID: this.superiorID,
           type:'drop',
+          uploader_flag:true,
           event:e,
           target:this.superiorID
         });

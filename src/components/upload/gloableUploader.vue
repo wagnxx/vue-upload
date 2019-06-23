@@ -1,5 +1,5 @@
 <template>
-  <div id="global-uploader">
+  <div id="global-uploader" v-show="uploader_flag">
     <!-- 上传 -->
     <uploader
       ref="uploader"
@@ -26,21 +26,7 @@
         >
           <div class="file-title">
             <h2>文件列表</h2>
-            <!-- <div class="operate">
-              <el-button
-                @click="fileListShow"
-                type="text"
-                :title="collapse ? '展开':'折叠' "
-              >
-                <i
-                  class="iconfont"
-                  :class="collapse ? 'icon-fullscreen': 'icon-minus-round'"
-                ></i>
-              </el-button>
-              <el-button @click="close" type="text" title="关闭">
-                <i class="iconfont icon-close"></i>
-              </el-button>
-            </div> -->
+
           </div>
 
           <ul class="file-list">
@@ -70,6 +56,7 @@
       return {
         uploader: null,
         collapse: true,
+        uploader_flag: false,
         options: {
           target: "http://localhost:8082/upload/file", // 目标上传 URL
           // chunkSize: "2048000", //分块大小
@@ -201,13 +188,12 @@
       let _this = this;
       let uploader = this.$refs.uploader.uploader;
       let drop = _this.$refs.drop;
-      
-      debugger;
+  
       this.uploader = uploader;
       this.$nextTick(() => {
         _this.Bus.$on("openUploader", query => {
           if (_this.$refs.drop && query.type === "drop") {
-            // _this.options.target=query.target;
+            _this.uploader_flag=query.uploader_flag;
             uploader.opts.query.target = query.target;
             uploader.onDrop.call(uploader, query.event);
           }

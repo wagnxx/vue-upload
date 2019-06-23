@@ -10,6 +10,11 @@ export default new Router({
       path: '/',
       name: 'upload',
       component: ()=>import('@/pages/upload')
-    }
+    },
+    {
+      path: '/tree',
+      name: 'tree',
+      component: ()=>import('@/pages/tree/List.vue')
+    },
   ]
 })
