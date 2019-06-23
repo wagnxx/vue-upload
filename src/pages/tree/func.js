@@ -42,7 +42,6 @@ export const mergeKeys = (obj, t, m) => {
     }
     if(obj.type!==1){
         // 文件夹
-        // type:isFolder?'ios-folder-outline': "ios-paper-outline"
         obj.iconType='ios-folder-outline'
     }else{
         obj.iconType='ios-paper-outline'
